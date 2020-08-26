@@ -28,6 +28,9 @@ all:
       # 3 is the minimum number for a fully-functional cluster.
       os_compute_nodes_number: 3
 
+      os_apivip: "{{ os_subnet_range | next_nth_usable(5) }}"
+      os_ingressvip: "{{ os_subnet_range | next_nth_usable(7) }}"
+
       # The public network, if available. Required for os_api_fip and
       # os_ingress_fip.
       # If non-empty, an additional floating IP will be created and attached to
